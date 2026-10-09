@@ -1,0 +1,242 @@
+@import './tokens.css';
+@import './typography.css';
+
+/* CSS Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+  background-color: var(--color-bg-app);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+
+input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Base Accessibility Focus Ring */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* App Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    padding: var(--space-8) var(--space-6);
+  }
+}
+
+/* Header Styles */
+.site-header {
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg-surface);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.header-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-primary);
+  font-family: var(--font-brand);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.brand-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--color-text-main);
+  background-color: var(--color-bg-subtle);
+}
+
+.nav-link.active {
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  font-weight: 600;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
+.badge-noun {
+  background-color: #e0f2fe;
+  color: var(--color-badge-noun);
+}
+
+.badge-verb {
+  background-color: var(--color-accent-subtle);
+  color: var(--color-badge-verb);
+}
+
+.badge-adjective {
+  background-color: #f3e8ff;
+  color: var(--color-badge-adj);
+}
+
+.badge-adverb {
+  background-color: #ffedd5;
+  color: var(--color-badge-adv);
+}
+
+.badge-default {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-secondary);
+}
+
+/* Match type badges */
+.badge-match-exact {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary-border);
+}
+
+.badge-match-prefix {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+.badge-match-fuzzy {
+  background-color: var(--color-fuzzy-bg);
+  color: var(--color-fuzzy);
+  border: 1px solid var(--color-fuzzy-border);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-main);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--color-bg-subtle);
+}
+
+.btn-danger {
+  background-color: var(--color-error);
+  color: #ffffff;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: #991b1b;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 200ms ease-out forwards;
+}
